@@ -32,6 +32,7 @@
 
 #GET Requests
     Two endpoints for executing GET requests:
+
         * {baseUrl}:{server.port}/communication/message/{moduleName} - returns the last value saved for this moduleName
 
             Example request:
