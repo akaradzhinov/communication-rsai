@@ -16,7 +16,8 @@
 #ModuleMappings
 
     This enum should contain the mappings to the external urls to the other modules.
-    GEAR("gear","www.example.come") -> this represents the module from which the data came (in this case module "gear")
+
+    GEAR("gear","www.example.come") - this represents the module from which the data came (in this case "gear")
                                        and the url of the endpoint where the data should be sent (www.example.come)
     
 #URL for sending data
@@ -25,16 +26,15 @@
     
 #Example request and payload
 
-    POST ->     http://localhost:8080/communication/send
+    POST    ->  http://localhost:8080/communication/send
     HEADERS ->  Content-type: application/json
-    body -> 
-    {
-      "moduleName":"display",
-      "value": {
-                 "gear":4,
-                 "rpm":4500
-               }
-    }
+    body    ->  {
+                   "moduleName":"display",
+                   "value":{
+                      "gear":4,
+                      "rpm":4500
+                   }
+                }
 
 #GET Requests
 
