@@ -7,8 +7,9 @@ package bg.sofia.tu.rsai.communication.mappings;
  * created on 07/06/2017 @ 23:42.
  */
 public enum ModuleMappings {
-    DISPLAY("display","http://localhost:8181/communication/test"),
-    GEAR("gear","exampleUrl.net");
+    GEAR("gear","http://localhost:8080/communication/test"),
+    BELT("belt","http://localhost:8080/communication/test"),
+    SPEED("speed","http://localhost:8080/communication/test");
 
 
     private String name;

@@ -1,14 +1,14 @@
 package bg.sofia.tu.rsai.communication;
 
 import bg.sofia.tu.rsai.communication.response.CommunicationResponse;
+import bg.sofia.tu.rsai.communication.storage.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * author: Aleksandar Karadzhinov
@@ -22,6 +22,9 @@ public class CommunicationController {
 
     @Autowired
     private CommunicationService communicationService;
+
+    @Autowired
+    private StorageService storageService;
 
 
     @RequestMapping(value = "/send", method = RequestMethod.POST, consumes = "application/json")
@@ -38,9 +41,19 @@ public class CommunicationController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
         }
 
+        storageService.putData(message.getModuleName(), message.getValue());
         return ResponseEntity.status(result.getStatus()).body(result.getMessage());
     }
 
+    @RequestMapping(value = "/message/{key}")
+    public Object getMessageByModule(@PathVariable String key) {
+        return storageService.retrieveData(key);
+    }
+
+    @RequestMapping(value = "/messages")
+    public List<Message> getAllMessages() {
+        return storageService.retrieveMessages();
+    }
 
     //only for testing CommunicationRestTemplate purposes
     @RequestMapping(value = "/test", method = RequestMethod.POST, consumes = "application/json")
