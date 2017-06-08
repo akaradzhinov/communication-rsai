@@ -3,6 +3,9 @@
 #Building of the project:
 
     use command:    mvn clean install
+    
+    You can skip the tests for a faster build using the command:
+        mvn clean install -Dmaven.test.skip
 
 #Running the project:
 
