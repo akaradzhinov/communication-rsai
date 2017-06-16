@@ -12,6 +12,8 @@ import java.io.IOException;
  * <p/>
  * created on 08/06/2017 @ 00:14.
  */
+
+//[Requirement SRSReq03] Да има имплементирана основна стратегия за възстановяване чрез повторно изпращане на съобщенията при грешка
 public class CommunicationErrorHandler implements ResponseErrorHandler {
     @Override
     public boolean hasError(ClientHttpResponse response) throws IOException {

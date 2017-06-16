@@ -27,6 +27,7 @@ public class CommunicationController {
     private StorageService storageService;
 
 
+    //[Requirement SRSReq01] Приема съобщения (получава POST request) от другите модули
     @RequestMapping(value = "/send", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<?> sendMessage(@RequestBody Message message) {
         if (!validMessage(message)) {
@@ -45,11 +46,13 @@ public class CommunicationController {
         return ResponseEntity.status(result.getStatus()).body(result.getMessage());
     }
 
+    //[Requirement SRSReq09] Визуализиращия екип да може да изисква данните за конкретен модул свързан с комуникационната среда
     @RequestMapping(value = "/message/{key}")
     public Object getMessageByModule(@PathVariable String key) {
         return storageService.retrieveData(key);
     }
 
+    //[Requirement SRSReq10] Визуализиращия екип да може да изисква данните за всички модули свързани с комуникационната среда
     @RequestMapping(value = "/messages")
     public List<Message> getAllMessages() {
         return storageService.retrieveMessages();
@@ -62,6 +65,7 @@ public class CommunicationController {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("your request was pretty bad");
     }
 
+    //[Requirement SRSReq04] Валидира входящите заявки, което да се използва в SRSReq03
     private boolean validMessage(Message message) {
         return !StringUtils.isEmpty(message.getModuleName());
     }

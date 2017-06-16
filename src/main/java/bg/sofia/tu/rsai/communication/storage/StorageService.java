@@ -14,6 +14,8 @@ import java.util.concurrent.ConcurrentHashMap;
  * <p/>
  * created on 08/06/2017 @ 23:04.
  */
+
+//[Requirement SRSReq06] Съхраняване на последните (най-нови) данни, пристигнали от всеки един от модулите
 @Service
 public class StorageService {
 

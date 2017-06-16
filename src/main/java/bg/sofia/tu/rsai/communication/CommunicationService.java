@@ -19,6 +19,7 @@ public class CommunicationService {
     private CommunicationRestTemplate communicationRestTemplate;
 
 
+    //[Requirement SRSReq02] Изпраща съобщения (прави POST request) до визуализиращия екип
     public CommunicationResponse sendMessage(Message message) {
         String url = ModuleMappings.getValue(message.getModuleName());
 
